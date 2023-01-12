@@ -25,7 +25,9 @@ final class ConverterPresenter {
     }
     
     func showCurrencyList() {
-
+        self.router?.showCurrencyList({ pair in
+            self.loadRate(for: pair)
+        })
     }
     
     func converted(valueText: String?, isTopText: Bool = true) -> String? {

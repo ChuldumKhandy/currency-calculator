@@ -9,6 +9,7 @@ import Foundation
 
 protocol SceneFactoryProtocol {
     func createConverterVC(router: RootRouter) -> ConverterViewController
+    func createCurrencyListVC(router: RootRouter, completion: ((String) -> Void)?) -> CurrencyListViewController
 }
 
 final class SceneFactory: SceneFactoryProtocol {
@@ -22,5 +23,12 @@ final class SceneFactory: SceneFactoryProtocol {
         return viewController
     }
     
+    func createCurrencyListVC(router: RootRouter, completion: ((String) -> Void)?) -> CurrencyListViewController {
+        let viewController = CurrencyListViewController.loadFromNib()
+        let presenter = CurrencyListPresenter(router: router)
+        presenter.updateCallback = completion
+        viewController.presenter = presenter
+        
+        return viewController
+    }
 }
-

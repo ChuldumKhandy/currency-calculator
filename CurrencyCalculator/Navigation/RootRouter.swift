@@ -25,6 +25,11 @@ final class RootRouter {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
+    
+    func showCurrencyList(_ completion: ((String) -> Void)? = nil) {
+        let viewController = sceneFactory.createCurrencyListVC(router: self, completion: completion)
+        rootViewController.present(viewController, animated: true)
+    }
 
     func dismiss(_ viewController: UIViewController?) {
         if let viewController = viewController {
