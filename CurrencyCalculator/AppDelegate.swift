@@ -10,6 +10,7 @@ import UIKit
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    private var router: RootRouter?
     var window: UIWindow?
 
     func application(_ application: UIApplication,
@@ -17,8 +18,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        if let window = window {
+            router = RootRouter(window: window)
+            router?.showMainViewController()
+        }
+        
         return true
     }
-
 }
-
